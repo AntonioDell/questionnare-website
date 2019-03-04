@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reaction Test</title>
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/info.css" rel="stylesheet">
+    <script type="module" src="js/info.js"></script>
+</head>
+
+<body>
+<div class="content">
+    <h1 id="header">Additional Test Info</h1>
+    <div>
+        <label for="group_type">Your group type:</label>
+        <select id="group_type" name="group-type">
+            <option value="camparison">Comparison-Group</option>
+            <option value="test">Tester-Group</option>
+        </select>
+    </div>
+    <div>
+        <label for="german_level">Level of german knowledge. Only applicable for Tester-Group</label>
+        <select id="german_level" name="german-level" disabled>
+            <option value=''></option>
+            <option value="a1">A1</option>
+            <option value="a2">A2</option>
+            <option value="b1">B1</option>
+            <option value="b2">B2</option>
+        </select>
+    </div>
+    <button id="submitBtn">Start questions</button>
+</div>
+</body>
+
+</html>

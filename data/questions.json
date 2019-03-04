@@ -1,0 +1,43 @@
+[
+  {
+    "audioFile": "/assets/SampleAudio_0.4mb.mp3",
+    "answers": [
+      {
+        "text": "Noise",
+        "rightAnswer": true
+      },
+      {
+        "text": "Music"
+      }
+    ],
+    "evaluate": true,
+    "questionGroup": 1
+  },
+  {
+    "audioFile": "/assets/SampleAudio_0.4mb.mp3",
+    "answers": [
+      {
+        "text": "Magic",
+        "rightAnswer": true
+      },
+      {
+        "text": "Flamingo"
+      }
+    ],
+    "evaluate": false
+  },
+  {
+    "audioFile": "/assets/SampleAudio_0.4mb.mp3",
+    "answers": [
+      {
+        "text": "Banana"
+      },
+      {
+        "text": "Bread",
+        "rightAnswer": true
+      }
+    ],
+    "evaluate": true,
+    "questionGroup": 3
+  }
+]
