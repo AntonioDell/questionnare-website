@@ -50,6 +50,7 @@ function apiResult() {
 }
 
 function apiQuestion() {
+    debugger;
     fetch('/api/question/1', {
         method: 'GET',
         headers: {"Content-Type": "application/json"}

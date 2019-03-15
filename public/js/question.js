@@ -9,20 +9,20 @@ let receivedQuestionData;
 let duration = null;
 
 headerElement.innerText += ' ' + (+questionNumber + 1);
-
-fetch('/api/question/' + questionNumber, {
+const url = '/api/question?testId=' + testId;
+fetch(url, {
     method: 'GET',
     headers: {"Content-Type": "application/json"}
 }).then(response => {
-    if (response.status === 200) {
+    debugger;
+    if (!response.redirected && response.status === 200) {
         response.json().then(questionData => {
             receivedQuestionData = questionData;
             audioElement.src = questionData.audioFile;
             audioElement.onplay = onPlay;
         });
-    } else if (response.status === 304) {
-        console.log('Redirect');
-        window.location.href = '/end.html';
+    } else {
+        window.location.href = response.url;
     }
 });
 
@@ -73,7 +73,7 @@ function onAnswerClicked(correctAnswerClicked) {
     const resultData = {
         testId: testId,
         data: {
-            questionNumber: questionNumber,
+            questionId: receivedQuestionData.id,
             answer: correctAnswerClicked,
             duration: duration
         }

@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "audioFile": "/assets/SampleAudio_0.4mb.mp3",
+    "answers": [
+      {
+        "text": "AB-X Noise",
+        "rightAnswer": true
+      },
+      {
+        "text": "AB-X Music"
+      }
+    ],
+    "evaluate": true,
+    "questionGroup": 1
+  },
+  {
+    "id": 2,
+    "audioFile": "/assets/SampleAudio_0.4mb.mp3",
+    "answers": [
+      {
+        "text": "AB-X Magic",
+        "rightAnswer": true
+      },
+      {
+        "text": "AB-X Flamingo"
+      }
+    ],
+    "evaluate": false
+  },
+  {
+    "id": 3,
+    "audioFile": "/assets/SampleAudio_0.4mb.mp3",
+    "answers": [
+      {
+        "text": "AB-X Banana"
+      },
+      {
+        "text": "AB-X Bread",
+        "rightAnswer": true
+      }
+    ],
+    "evaluate": true,
+    "questionGroup": 3
+  }
+]
