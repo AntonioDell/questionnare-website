@@ -24,6 +24,7 @@
     color: white;
     padding: 5px;
     margin: 15px;
+    min-width: 100px;
 }
 
 .blue-buttons:disabled {

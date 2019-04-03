@@ -44,6 +44,20 @@ function setupRoutes() {
         //console.log("Example app listening on port 3000!");
     });
 
+    //TODO remove debug code
+    app.get('/api/results', (req, res) => {
+        fs.readdir('data', (err, files) => {
+            if (err) {
+                res.status(500);
+                res.send();
+            } else {
+                console, log(files);
+                res.status(200);
+                res.json(files);
+            }
+        });
+    });
+
     app.get('/api/question', (req, res) => {
         const testId = req.query.testId;
 
@@ -51,7 +65,7 @@ function setupRoutes() {
             .then(test => {
                 const answeredQuestionIds = test.results.map(result => result.questionId);
 
-                console.log('Answered: ', answeredQuestionIds);
+                console.log('Questions answered ', answeredQuestionIds.length);
                 let questionCountDown = answeredQuestionIds.length;
                 let selectedQuestionFile;
                 for (const questionFile of questionFiles) {
