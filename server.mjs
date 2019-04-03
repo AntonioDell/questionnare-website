@@ -51,9 +51,12 @@ function setupRoutes() {
                 res.status(500);
                 res.send();
             } else {
-                console, log(files);
-                res.status(200);
-                res.json(files);
+                let testResultFiles = files.filter(file => file.startsWith("test"));
+                Promise.all(testResultFiles.map(file => fs.readJSON('data/' + file)))
+                    .then(testFiles => {
+                        res.status(200);
+                        res.json(testFiles);
+                    });
             }
         });
     });
