@@ -17,30 +17,20 @@
     <div>
         <label for="group_type">Do you speak german?:</label>
         <select id="group_type" name="group-type">
-            <option value="test" selected>No</option>
-            <option value="comparison">Yes</option>
+            <option value="comparison" selected>No</option>
+            <option value="test">Yes</option>
         </select>
     </div>
     <div>
         <label for="german_level">Level of german knowledge? (Only applicable for german speakers)</label>
         <select id="german_level" name="german-level" disabled>
             <option value=''></option>
-            <option value="a1">A1</option>
-            <option value="a2">A2</option>
-            <option value="b1">B1</option>
-            <option value="b2">B2</option>
-            <option value="c1">C1</option>
-            <option value="c2">C2</option>
-        </select>
-    </div>
-    <div>
-        <label for="german_since_when">How long did you speak german? (Only applicable for german speakers)</label>
-        <select id="german_since_when" name="german_since_when" disabled>
-            <option value=''></option>
-            <option value="two_or_less">&lt; 2 years</option>
-            <option value="two_to_five">2 - 5 years</option>
-            <option value="five_or_more">&gt; 5 years</option>
-            <option value="native">Native speaker</option>
+            <option value="a1">A1 (Beginner)</option>
+            <option value="a2">A2 (Elementary)</option>
+            <option value="b1">B1 (Intermediate)</option>
+            <option value="b2">B2 (Upper Intermediate)</option>
+            <option value="c1">C1 (Advanced)</option>
+            <option value="c2">C2 (Expert)</option>
         </select>
     </div>
     <button id="submitBtn">Start questions</button>
