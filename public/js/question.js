@@ -32,6 +32,7 @@ fetch(url, {
                 defaultText.hidden = true;
                 changedText.hidden = false;
             }
+            debugger;
         });
     } else {
         window.location.href = response.url;
