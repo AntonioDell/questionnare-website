@@ -95,35 +95,12 @@ function setupRoutes() {
                     res.redirect(303, '/end.html');
                 }
             });
-        /*
-            .then(missingQuestions => {
-                fs.readJSON('data/questions.json')
-                    .then(questionArray => {
-                        if (questionNumber < questionArray.length) {
-                            const selectedQuestion = questionArray[questionNumber];
-                            if (!selectedQuestion) {
-                                throw 'Question number ' + questionNumber + ' does not exist!';
-                            }
-                            res.status(200);
-                            res.json(selectedQuestion);
-                        } else {
-                            res.status(304);
-                            res.send();
-                        }
-                    })
-                    .catch(error => {
-                        res.status(403);
-                        logError(error).then(() => {
-                            res.send();
-                        })
-                    })
-                    */
     });
 
 
     app.post("/api/uuid", (req, res) => {
         const infos = req.body;
-        const newTest = new Test(v4(), infos.groupType, infos.germanLevel);
+        const newTest = new Test(v4(), infos.groupType, infos.germanLevel, infos.germanSinceWhen);
         const newFile = 'data/test_' + newTest.testId + '.json';
 
         fs.ensureFile(newFile)
@@ -165,10 +142,11 @@ async function logError(error) {
 // Classes
 
 class Test {
-    constructor(testId, groupType, germanLevel) {
+    constructor(testId, groupType, germanLevel, germanSinceWhen) {
         this.testId = testId;
         this.groupType = groupType;
         this.germanLevel = germanLevel;
+        this.germanSinceWhen = germanSinceWhen;
         this.results = [];
     }
 }

@@ -1,5 +1,6 @@
 const submitButton = document.getElementById('submitBtn');
 const germanLevelInput = document.getElementById('german_level');
+const germanSinceWhenInput = document.getElementById('german_since_when');
 const groupTypeInput = document.getElementById('group_type');
 
 groupTypeInput.onchange = onGroupTypeChanged;
@@ -7,9 +8,13 @@ submitButton.onclick = onSubmitClicked;
 
 
 function onGroupTypeChanged() {
-    germanLevelInput.disabled = groupTypeInput.value !== 'test';
+    germanLevelInput.disabled = groupTypeInput.value === 'test';
     if (germanLevelInput.disabled) {
         germanLevelInput.value = '';
+    }
+    germanSinceWhenInput.disabled = groupTypeInput.value === 'test';
+    if (germanSinceWhenInput.disabled) {
+        germanSinceWhenInput.value = '';
     }
 }
 
@@ -25,14 +30,20 @@ function onSubmitClicked() {
         alert('Please specify a group type!');
         return;
     }
-    if (groupTypeInput.value === 'test' && !germanLevelInput.value) {
-        alert('Please specify your german knowledge!');
-        return;
+    if (groupTypeInput.value === 'comparison') {
+        if (!germanLevelInput.value) {
+            alert('Please specify your german knowledge!');
+            return;
+        } else if (!germanSinceWhenInput.value) {
+            alert('Please specify how long you already spoke german!')
+            return;
+        }
     }
 
     const testInfoData = {
         groupType: groupTypeInput.value,
-        germanLevel: germanLevelInput.value
+        germanLevel: germanLevelInput.value,
+        germanSinceWhen: germanSinceWhenInput.value
     };
 
     fetch('/api/uuid', {

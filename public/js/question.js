@@ -2,6 +2,10 @@ const audioElement = document.getElementById('audio');
 const leftButton = document.getElementById('btnAnswer1');
 const rightButton = document.getElementById('btnAnswer2');
 const headerElement = document.getElementById('header');
+
+const defaultText = document.getElementById('default_text');
+const changedText = document.getElementById('changed_text');
+
 const questionNumber = localStorage['currentQuestion'];
 const testId = localStorage['test-id'];
 let receivedQuestionData;
@@ -14,12 +18,20 @@ fetch(url, {
     method: 'GET',
     headers: {"Content-Type": "application/json"}
 }).then(response => {
-    debugger;
     if (!response.redirected && response.status === 200) {
         response.json().then(questionData => {
             receivedQuestionData = questionData;
             audioElement.src = questionData.audioFile;
             audioElement.onplay = onPlay;
+
+            // TODO: Adapt to first id of rl questions
+            if (questionData.id < 33) {
+                defaultText.hidden = false;
+                changedText.hidden = true;
+            } else {
+                defaultText.hidden = true;
+                changedText.hidden = false;
+            }
         });
     } else {
         window.location.href = response.url;
