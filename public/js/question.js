@@ -12,6 +12,8 @@ let receivedQuestionData;
 
 let duration = null;
 
+audioElement.disabled = true;
+
 headerElement.innerText += ' ' + (+questionNumber + 1);
 const url = '/api/question?testId=' + testId;
 fetch(url, {
@@ -32,7 +34,7 @@ fetch(url, {
                 defaultText.hidden = true;
                 changedText.hidden = false;
             }
-            debugger;
+            audioElement.disabled = false;
         });
     } else {
         window.location.href = response.url;
