@@ -1,6 +1,6 @@
 import express from "express";
 import fs from "fs-extra";
-import v4 from 'uuid/v4';
+import {v4} from 'uuid';
 
 const questionJsonFiles = ['data/questions_ab-x.json', 'data/questions_rl.json'];
 const questionFiles = [];

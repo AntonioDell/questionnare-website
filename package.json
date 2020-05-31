@@ -2,7 +2,7 @@
   "name": "questionnaire-website",
   "version": "1.0.0",
   "scripts": {
-    "start": "node --experimental-modules server.mjs"
+    "start": "node server.mjs"
   },
   "main": "server.mjs",
   "author": "Antonio Dell'Annunziata",
