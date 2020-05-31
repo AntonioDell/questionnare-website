@@ -1,6 +1,6 @@
 {
   "name": "questionnaire-website",
-  "version": "0.0.1-beta.4",
+  "version": "1.0.0",
   "scripts": {
     "start": "node --experimental-modules server.mjs"
   },
