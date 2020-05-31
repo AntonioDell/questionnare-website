@@ -40,8 +40,8 @@ function setupRoutes() {
     app.use(express.static("public"));
     app.use(express.json());
 
-    app.listen(3000, function () {
-        //console.log("Example app listening on port 3000!");
+    app.listen(process.env.PORT || 3000, function () {
+        console.log(`Questionnaire app listening on port ${process.env.PORT || 3000}!`);
     });
 
     //TODO remove debug code
