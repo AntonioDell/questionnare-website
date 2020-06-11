@@ -33,7 +33,6 @@ function onFormSubmit(e) {
     body: formData,
   })
     .then((response) => {
-      debugger;
       return response.json();
     })
     .then((respJson) => {
