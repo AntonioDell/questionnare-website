@@ -1,46 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Question</title>
     <script type="module" src="js/question.js"></script>
-    <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-</head>
-<body>
-<div class="content">
-    <h1 id="header">Question</h1>
-    <div class="centered">
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="content">
+      <h1 id="header">Question</h1>
+      <div class="centered">
         <div id="changed_text" class="margin" hidden>
-            <p>Im Folgenden werden Sie nur noch ein Wort hören. Entweder die Version mit R oder L. Bitte drücken Sie
-                wieder den damit übereinstimmenden Knopf.</p>
-            <p>Hereinafter you will hear just one word. Either the version with R or L. Please click again on the
-                according button.</p>
-            <p>다음으로, 당신은 한 단어를 듣게 될 것입니다. 이 단어는 R 또는 L 을 포함한 것입니다. 해당되는 버튼을 누르십시오.</p>
+          <p>
+            Im Folgenden werden Sie nur noch ein Wort hören. Entweder die
+            Version mit R oder L. Bitte drücken Sie wieder den damit
+            übereinstimmenden Knopf.
+          </p>
+          <p>
+            Hereinafter you will hear just one word. Either the version with R
+            or L. Please click again on the according button.
+          </p>
+          <p>
+            다음으로, 당신은 한 단어를 듣게 될 것입니다. 이 단어는 R 또는 L 을
+            포함한 것입니다. 해당되는 버튼을 누르십시오.
+          </p>
         </div>
         <div id="default_text" class="margin" hidden>
-            <p>Bitte drücken Sie den Play-Knopf um die Audioaufnahme zu starten. Der Text auf den grauen Knöpfen wird
-                sich ändern. Bitte drücken Sie den entsprechenden Knopf.</p>
-            <p>Please click on the play button to start the recording. The text on the gray buttons will change. Then
-                please click on the according button.</p>
+          <p>
+            Bitte drücken Sie den Play-Knopf um die Audioaufnahme zu starten.
+            Der Text auf den grauen Knöpfen wird sich ändern. Bitte drücken Sie
+            den entsprechenden Knopf.
+          </p>
+          <p>
+            Please click on the play button to start the recording. The text on
+            the gray buttons will change. Then please click on the according
+            button.
+          </p>
         </div>
-    </div>
+      </div>
 
-    <div class="margin centered">
-        <audio id="audio" controls>
-        </audio>
-    </div>
-    <div class="margin button-holder">
+      <div class="margin centered">
+        <audio id="audio" controls></audio>
+      </div>
+      <div class="margin button-holder">
         <button id="btnAnswer1" class="blue-buttons" disabled></button>
         <button id="btnAnswer2" class="blue-buttons" disabled></button>
-    </div>
+      </div>
 
-    <footer>
+      <footer>
         Contact:
-        <a href="mailto:victor-valerian.sebesta@stud.uni-bamberg.de">victor-valerian.sebesta@stud.uni-bamberg.de</a>
-    </footer>
-</div>
-
-
-</body>
+        <a href="mailto:victor-valerian.sebesta@stud.uni-bamberg.de"
+          >victor-valerian.sebesta@stud.uni-bamberg.de</a
+        >
+      </footer>
+    </div>
+  </body>
 </html>

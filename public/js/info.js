@@ -18,11 +18,11 @@ function onGroupTypeChanged() {
 }
 
 function onFormSubmit(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-   const formData = new FormData(form);
+  const formData = new FormData(form);
 
-   if (localStorage["test-id"]) {
+  if (localStorage["test-id"]) {
     alert(
       "You already completed the survey once. If this is an error and you'd like to participate again, please contact me."
     );
@@ -35,7 +35,7 @@ function onFormSubmit(e) {
     body: formData,
   })
     .then((response) => {
-        debugger;
+      debugger;
       return response.json();
     })
     .then((respJson) => {

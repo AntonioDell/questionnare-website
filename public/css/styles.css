@@ -1,50 +1,50 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 
 .margin {
-    margin: 15px;
+  margin: 15px;
 }
 
 .margin > p {
-    padding: 5px;
-    border: 2px solid black;
+  padding: 5px;
+  border: 2px solid black;
 }
 
 .centered {
-    display: flex;
-    justify-content: center;
-    vertical-align: center;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  vertical-align: center;
+  width: 100%;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-self: center;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  height: 100%;
+  width: 100%;
 }
 
 .button-holder {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .blue-buttons {
-    background-color: darkblue;
-    color: white;
-    padding: 5px;
-    margin: 15px;
-    min-width: 100px;
-    min-height: 50px;
+  background-color: darkblue;
+  color: white;
+  padding: 5px;
+  margin: 15px;
+  min-width: 100px;
+  min-height: 50px;
 }
 
 .blue-buttons:disabled {
-    background-color: grey;
-    color: black;
+  background-color: grey;
+  color: black;
 }
 
 footer {
-    margin-top: 25px;
+  margin-top: 25px;
 }
