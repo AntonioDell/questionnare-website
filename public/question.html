@@ -10,29 +10,35 @@
   <body>
     <div class="content">
       <h1 id="header">Question</h1>
-      <div class="centered">
+      <div>
+        <div id="training_text" class="margin" hidden>
+          <p class="border">
+            The following example is a training question to get used to the kind
+            of questions asked. The result will not be evaluated.
+          </p>
+        </div>
         <div id="changed_text" class="margin" hidden>
-          <p>
+          <p class="border">
             다음으로, 당신은 한 단어를 듣게 될 것입니다. 이 단어는 R 또는 L 을
             포함한 것입니다. 해당되는 버튼을 누르십시오.
           </p>
-          <p>
+          <p class="border">
             Hereinafter you will hear just one word. Either the version with R
             or L. Please click again on the according button.
           </p>
-          <p>
+          <p class="border">
             Im Folgenden werden Sie nur noch ein Wort hören. Entweder die
             Version mit R oder L. Bitte drücken Sie wieder den damit
             übereinstimmenden Knopf.
           </p>
         </div>
         <div id="default_text" class="margin" hidden>
-          <p>
+          <p class="border">
             Please click on the play button to start the recording. The text on
             the gray buttons will change. Then please click on the according
             button.
           </p>
-          <p>
+          <p class="border">
             Bitte drücken Sie den Play-Knopf um die Audioaufnahme zu starten.
             Der Text auf den grauen Knöpfen wird sich ändern. Bitte drücken Sie
             den entsprechenden Knopf.
@@ -40,13 +46,15 @@
         </div>
       </div>
 
-      <div class="margin centered">
+      <div class="margin">
         <audio id="audio" controls></audio>
       </div>
       <div class="margin button-holder">
         <button id="btnAnswer1" class="blue-buttons" disabled></button>
         <button id="btnAnswer2" class="blue-buttons" disabled></button>
-        <button id="btnInaudible" class="blue-buttons" disabled>Inaudible</button>
+        <button id="btnInaudible" class="blue-buttons" disabled>
+          Inaudible
+        </button>
       </div>
 
       <footer>

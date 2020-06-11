@@ -1,19 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 
+.top-margin {
+  margin-top: 15px;
+}
+
 .margin {
   margin: 15px;
 }
 
-.margin > p {
+.border {
   padding: 5px;
-  border: 2px solid black;
-}
-
-.centered {
-  display: flex;
-  justify-content: center;
-  vertical-align: center;
-  width: 100%;
+  border: 1px solid black;
 }
 
 .content {
@@ -43,6 +40,11 @@
 .blue-buttons:disabled {
   background-color: grey;
   color: black;
+}
+
+.submit-button {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 footer {

@@ -75,7 +75,6 @@ function setupRoutes() {
         (result) => result.questionId
       );
 
-      console.log("Questions answered ", answeredQuestionIds.length);
       let questionCountDown = answeredQuestionIds.length;
       let selectedQuestionFile;
       for (const questionFile of questionFiles) {
@@ -96,11 +95,16 @@ function setupRoutes() {
         : null;
 
       if (missingQuestions) {
-        console.log("Json sent");
-        // Get random question from missing questions
-        const randomIndex = new Date().getTime() % missingQuestions.length;
+        let index;
+        if(missingQuestions.length == selectedQuestionFile.length){
+          // Get first question of file
+          index = 0;
+        } else {
+          // Get random question from missing questions
+          index = new Date().getTime() % missingQuestions.length;
+        }
         res.status(200);
-        res.json(missingQuestions[randomIndex]);
+        res.json(missingQuestions[index]);
       } else {
         // User answered all questions
         res.redirect(303, "/end.html");

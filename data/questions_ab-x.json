@@ -12,7 +12,8 @@
       }
     ],
     "evaluate": true,
-    "questionGroup": 1
+    "questionGroup": 1,
+    "trainingQuestion": true
   },
   {
     "id": 2,

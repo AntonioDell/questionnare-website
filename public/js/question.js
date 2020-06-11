@@ -7,6 +7,8 @@ const headerElement = document.getElementById("header");
 const defaultText = document.getElementById("default_text");
 const changedText = document.getElementById("changed_text");
 
+const trainingText = document.getElementById("training_text");
+
 const questionNumber = localStorage["currentQuestion"];
 const testId = localStorage["test-id"];
 
@@ -25,6 +27,12 @@ fetch(url, {
 }).then((response) => {
   if (!response.redirected && response.status === 200) {
     response.json().then((questionData) => {
+      if (questionData.trainingQuestion) {
+        trainingText.hidden = false;
+      } else {
+        trainingText.hidden = true;
+      }
+
       receivedQuestionData = questionData;
       audioElement.src = questionData.audioFile;
       audioElement.onplay = onPlay;
@@ -47,8 +55,7 @@ fetch(url, {
 
 function onAudioEnded() {
   audioEnded = true;
-  console.log(`addtionalPlays are ${addtionalPlays}`);
-  if(addtionalPlays > 1){
+  if (addtionalPlays > 1) {
     audioElement.src = "";
   }
 }
@@ -113,7 +120,7 @@ function onAnswerClicked(correctAnswerClicked, isAnswerInaudible = false) {
       questionId: receivedQuestionData.id,
       answer: correctAnswerClicked,
       duration,
-      addtionalPlays
+      addtionalPlays,
     },
   };
   if (isAnswerInaudible) {
