@@ -1,6 +1,7 @@
 import express from "express";
 import fs from "fs-extra";
 import {v4} from 'uuid';
+import multer from 'multer';
 
 const questionJsonFiles = ['data/questions_ab-x.json', 'data/questions_rl.json'];
 const questionFiles = [];
@@ -35,7 +36,9 @@ function areDuplicateQuestionIdsAssigned() {
 }
 
 function setupRoutes() {
-    let app = express();
+    const app = express();
+    const upload = multer();
+
 
     app.use(express.static("public"));
     app.use(express.json());
@@ -98,9 +101,9 @@ function setupRoutes() {
     });
 
 
-    app.post("/api/uuid", (req, res) => {
+    app.post("/api/uuid", upload.none(), (req, res) => {
         const infos = req.body;
-        const newTest = new Test(v4(), infos.groupType, infos.germanLevel, infos.germanSinceWhen);
+        const newTest = {testId: v4(), ...infos, results: []};
         const newFile = 'data/test_' + newTest.testId + '.json';
 
         fs.ensureFile(newFile)

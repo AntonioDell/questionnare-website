@@ -1,45 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Reaction Test</title>
-    <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="css/info.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/info.css" rel="stylesheet" />
     <script type="module" src="js/info.js"></script>
-</head>
+  </head>
 
-<body>
-<div class="content">
-    <h1 id="header">Additional Test Info</h1>
-    <div>
-        <label for="group_type">Do you speak german?:</label>
-        <select id="group_type" name="group-type">
-            <option value="comparison" selected>No</option>
-            <option value="test">Yes</option>
-        </select>
+  <body>
+    <div class="content">
+      <h1 id="header">Additional Test Info</h1>
+      <form id="infoForm">
+        <fieldset>
+          <legend>General informations</legend>
+          <p>
+            How old are you?
+            <input id="age" type="number" required />
+          </p>
+          <p>
+            To which gender identity do you most identify?
+            <select id="gender" name="gender" required>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="other">Other</option>
+            </select>
+          </p>
+          <p>
+            Is korean your mother tongue?
+            <input
+              type="radio"
+              name="isKoreanMothertongue"
+              id="mothertongueYes"
+              value="yes"
+              checked
+              required
+            />
+            <label for="mothertongueYes">Yes</label>
+            <input
+              type="radio"
+              name="isKoreanMothertongue"
+              id="mothertongueNo"
+              value="no"
+            />
+            <label for="mothertongueNo">No</label>
+          </p>
+          <p>
+            Do you speak german?
+            <select id="groupType" name="groupType" required>
+              <option value="comparison" selected>No</option>
+              <option value="test">Yes</option>
+            </select>
+          </p>
+        </fieldset>
+        <fieldset id="onlyGermanSpeakers" disabled>
+          <legend>Only applicable for german speakers</legend>
+          <p>
+            Based on your opinion, what is your level of german knowledge?
+            <select id="germanLevelOpinion" name="germanLevelOpinion">
+              <option value=""></option>
+              <option value="a1">A1 (Beginner)</option>
+              <option value="a2">A2 (Elementary)</option>
+              <option value="b1">B1 (Intermediate)</option>
+              <option value="b2">B2 (Upper Intermediate)</option>
+              <option value="c1">C1 (Advanced)</option>
+              <option value="c2">C2 (Expert)</option>
+            </select>
+          </p>
+          <p>
+            Based on acquired certificates (completed courses, exams, etc.),
+            what is your level of german knowledge?
+            <select id="germanLevelCertified" name="germanLevelCertified">
+              <option value=""></option>
+              <option value="a1">A1 (Beginner)</option>
+              <option value="a2">A2 (Elementary)</option>
+              <option value="b1">B1 (Intermediate)</option>
+              <option value="b2">B2 (Upper Intermediate)</option>
+              <option value="c1">C1 (Advanced)</option>
+              <option value="c2">C2 (Expert)</option>
+            </select>
+          </p>
+          <p>
+            Where did you learn german?
+            <select id="germanLearnedIn" name="germanLearnedIn">
+              <option value=""></option>
+              <option value="germanCountry">
+                In a german speaking country
+              </option>
+              <option value="nonGermanCountry">
+                In a non-german speaking country
+              </option>
+            </select>
+          </p>
+        </fieldset>
+        <input id="submitBtn" type="submit" value="Start questions">
+      </form>
+
+      <footer>
+        Contact:
+        <a href="mailto:victor-valerian.sebesta@stud.uni-bamberg.de"
+          >victor-valerian.sebesta@stud.uni-bamberg.de</a
+        >
+      </footer>
     </div>
-    <div>
-        <label for="german_level">Level of german knowledge? (Only applicable for german speakers)</label>
-        <select id="german_level" name="german-level" disabled>
-            <option value=''></option>
-            <option value="a1">A1 (Beginner)</option>
-            <option value="a2">A2 (Elementary)</option>
-            <option value="b1">B1 (Intermediate)</option>
-            <option value="b2">B2 (Upper Intermediate)</option>
-            <option value="c1">C1 (Advanced)</option>
-            <option value="c2">C2 (Expert)</option>
-        </select>
-    </div>
-    <button id="submitBtn">Start questions</button>
-
-    <footer>
-        Contact: <a href="mailto:victor-valerian.sebesta@stud.uni-bamberg.de">victor-valerian.sebesta@stud.uni-bamberg.de</a>
-    </footer>
-</div>
-
-</body>
-
+  </body>
 </html>
