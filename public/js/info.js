@@ -1,5 +1,3 @@
-const submitButton = document.getElementById("submitBtn");
-const germanLevelInput = document.getElementById("germanLevel");
 const onlyGermanSpeakersSection = document.getElementById("onlyGermanSpeakers");
 const germanInputs = onlyGermanSpeakersSection.getElementsByTagName("select");
 const groupTypeInput = document.getElementById("groupType");
