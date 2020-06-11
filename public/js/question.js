@@ -1,6 +1,7 @@
 const audioElement = document.getElementById("audio");
 const leftButton = document.getElementById("btnAnswer1");
 const rightButton = document.getElementById("btnAnswer2");
+const inaudibleButton = document.getElementById("btnInaudible");
 const headerElement = document.getElementById("header");
 
 const defaultText = document.getElementById("default_text");
@@ -8,13 +9,15 @@ const changedText = document.getElementById("changed_text");
 
 const questionNumber = localStorage["currentQuestion"];
 const testId = localStorage["test-id"];
-let receivedQuestionData;
 
+let receivedQuestionData;
 let duration = null;
+let audioEnded = false;
+let addtionalPlays = 0;
 
 audioElement.disabled = true;
-
 headerElement.innerText += " " + (+questionNumber + 1);
+
 const url = "/api/question?testId=" + testId;
 fetch(url, {
   method: "GET",
@@ -25,6 +28,7 @@ fetch(url, {
       receivedQuestionData = questionData;
       audioElement.src = questionData.audioFile;
       audioElement.onplay = onPlay;
+      audioElement.onended = onAudioEnded;
 
       // TODO: Adapt to first id of rl questions
       if (questionData.id < 33) {
@@ -40,6 +44,14 @@ fetch(url, {
     window.location.href = response.url;
   }
 });
+
+function onAudioEnded() {
+  audioEnded = true;
+  console.log(`addtionalPlays are ${addtionalPlays}`);
+  if(addtionalPlays > 1){
+    audioElement.src = "";
+  }
+}
 
 function onPlay() {
   if (!duration) {
@@ -65,9 +77,14 @@ function onPlay() {
         currentButton = "left";
       }
     }
+    inaudibleButton.onclick = onInaudibleClicked;
 
+    inaudibleButton.disabled = false;
     leftButton.disabled = false;
     rightButton.disabled = false;
+  } else if (audioEnded) {
+    addtionalPlays++;
+    audioEnded = false;
   }
 }
 
@@ -79,20 +96,29 @@ function onWrongAnswerClicked() {
   onAnswerClicked(false);
 }
 
-function onAnswerClicked(correctAnswerClicked) {
+function onInaudibleClicked() {
+  onAnswerClicked(false, true);
+}
+
+function onAnswerClicked(correctAnswerClicked, isAnswerInaudible = false) {
   duration = new Date().getTime() - duration.getTime();
   console.log("Measured duration: ", duration);
   leftButton.disabled = true;
   rightButton.disabled = true;
+  inaudibleButton.disabled = true;
 
   const resultData = {
     testId: testId,
     data: {
       questionId: receivedQuestionData.id,
       answer: correctAnswerClicked,
-      duration: duration,
+      duration,
+      addtionalPlays
     },
   };
+  if (isAnswerInaudible) {
+    resultData.data.inaudible = true;
+  }
   fetch("/api/result", {
     method: "POST",
     body: JSON.stringify(resultData),
