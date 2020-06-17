@@ -55,7 +55,7 @@ fetch(url, {
 
 function onAudioEnded() {
   audioEnded = true;
-  if (addtionalPlays > 1) {
+  if (addtionalPlays == 1) {
     audioElement.src = "";
   }
 }
