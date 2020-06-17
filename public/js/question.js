@@ -39,7 +39,7 @@ fetch(url, {
       audioElement.onended = onAudioEnded;
 
       // TODO: Adapt to first id of rl questions
-      if (questionData.id < 33) {
+      if (questionData.id < 25) {
         defaultText.hidden = false;
         changedText.hidden = true;
       } else {
