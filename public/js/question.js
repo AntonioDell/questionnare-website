@@ -64,26 +64,18 @@ function onPlay() {
   if (!duration) {
     duration = new Date();
 
-    const randomIndex = new Date().getTime() % 2;
-    let currentButton = ["left", "right"][randomIndex];
-
-    for (let answer of receivedQuestionData.answers) {
-      if (currentButton === "left") {
-        if (answer.rightAnswer) {
-          leftButton.onclick = onRightAnswerClicked;
-          rightButton.onclick = onWrongAnswerClicked;
-        }
-        leftButton.innerText = answer.text;
-        currentButton = "right";
-      } else {
-        if (answer.rightAnswer) {
-          leftButton.onclick = onWrongAnswerClicked;
-          rightButton.onclick = onRightAnswerClicked;
-        }
-        rightButton.innerText = answer.text;
-        currentButton = "left";
-      }
+    const [firstAnswer, secondAnswer] = receivedQuestionData.answers;
+    leftButton.innerText = firstAnswer.text;
+    rightButton.innerText = secondAnswer.text;
+    
+    if (firstAnswer.rightAnswer) {
+      leftButton.onclick = onRightAnswerClicked;
+      rightButton.onclick = onWrongAnswerClicked;
+    } else {
+      leftButton.onclick = onWrongAnswerClicked;
+      rightButton.onclick = onRightAnswerClicked;
     }
+
     inaudibleButton.onclick = onInaudibleClicked;
 
     inaudibleButton.disabled = false;

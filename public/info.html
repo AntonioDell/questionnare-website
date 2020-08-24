@@ -11,25 +11,31 @@
   </head>
 
   <body>
+    <!-- TODO: Ab hier (inklusive Fragen) alle englische Texte auf koreanisch ändern-->
     <div class="content">
-      <h1 id="header">Additional Test Info</h1>
+      <!--<h1 id="header">Additional Test Info</h1>-->
+      <h1 id="header">테스트 추가 정보</h1>
       <form id="infoForm">
         <fieldset>
-          <legend>General informations</legend>
+          <!--<legend>General informations</legend>-->
+          <legend>기본 정보</legend>
           <p>
-            How old are you?
+            <!--How old are you?-->
+            당신은 몇살입니까?
             <input id="age" type="number" required />
           </p>
           <p>
-            To which gender identity do you most identify?
+            <!--To which gender identity do you most identify?-->
+            당신의 성 정체성은 무엇입니까?
             <select id="gender" name="gender" required>
-              <option value="female">Female</option>
-              <option value="male">Male</option>
-              <option value="other">Other</option>
+              <option value="female"><!--Female-->여성</option>
+              <option value="male"><!--Male-->남성</option>
+              <option value="other"><!--Other-->기타</option>
             </select>
           </p>
           <p>
-            Is korean your mother tongue?
+            한국어가 당신의 모국어입니까?
+            <!--Is korean your mother tongue?-->
             <input
               type="radio"
               name="isKoreanMotherTongue"
@@ -38,69 +44,101 @@
               checked
               required
             />
-            <label for="motherTongueYes">Yes</label>
+            <label for="motherTongueYes"><!--Yes-->예</label>
             <input
               type="radio"
               name="isKoreanMotherTongue"
               id="motherTongueNo"
               value="no"
             />
-            <label for="motherTongueNo">No</label>
+            <label for="motherTongueNo"><!--No-->아니오</label>
+          </p>
+          <!--TODO: Freitextfeld "Which languages do you speak beside korean? (Seperate the languages by comma)"-->
+          <p>
+            <!--Which languages do you speak beside korean? (Seperate each language
+            with a comma, f.e. "french, german")-->
+            한국어 외에 구사할 수 있는 언어는 무엇입니까? ( 각 언어를 쉼표로 구분하여 주십시오. 예시) 불어, 독일어
+            <input
+              type="text"
+              name="additionalLanguages"
+              id="additionalLanguages"
+            />
           </p>
           <p>
-            Do you speak german?
+            독일어를 할 수 있습니까?
+            <!--Do you speak german?-->
             <select id="groupType" name="groupType" required>
-              <option value="comparison" selected>No</option>
-              <option value="test">Yes</option>
+              <option value="comparison" selected><!--No-->아니오</option>
+              <option value="test"><!--Yes-->예</option>
             </select>
           </p>
         </fieldset>
         <fieldset id="onlyGermanSpeakers" disabled class="top-margin">
-          <legend>Only applicable for german speakers</legend>
+          <legend>
+            <!--Only applicable for german speakers-->독일어 사용자만 해당-
+          </legend>
           <p>
-            Based on your opinion, what is your level of german knowledge?
+            본인이 생각하는 당신의 독일어 수준은 어느 정도입니까?
+            <!--Based on your opinion, what is your level of german knowledge?-->
             <select id="germanLevelOpinion" name="germanLevelOpinion">
               <option value=""></option>
-              <option value="a1">A1 (Beginner)</option>
-              <option value="a2">A2 (Elementary)</option>
-              <option value="b1">B1 (Intermediate)</option>
-              <option value="b2">B2 (Upper Intermediate)</option>
-              <option value="c1">C1 (Advanced)</option>
-              <option value="c2">C2 (Expert)</option>
+              <option value="a1"><!--A1 (Beginner)-->A1 (입문)</option>
+              <option value="a2"><!--A2 (Elementary)-->A2 (초급)</option>
+              <option value="b1"><!--B1 (Intermediate)-->B1 (중급)</option>
+              <option value="b2"
+                ><!--B2 (Upper Intermediate)-->B2(중상급)</option
+              >
+              <option value="c1"><!--C1 (Advanced)-->C1(고급)</option>
+              <option value="c2"><!--C2 (Expert)-->C2(전문가)</option>
             </select>
           </p>
           <p>
-            Based on acquired certificates (completed courses, exams, etc.),
-            what is your level of german knowledge?
+            <!--Based on acquired certificates (completed courses, exams, etc.),
+            what is your level of german knowledge?-->
+            취득한 자격증(수료과정, 시험 등)에 근거한 당신의 독일어 수준은 어느
+            정도입니까?
             <select id="germanLevelCertified" name="germanLevelCertified">
               <option value=""></option>
-              <option value="none">No official certificates</option>
-              <option value="a1">A1 (Beginner)</option>
-              <option value="a2">A2 (Elementary)</option>
-              <option value="b1">B1 (Intermediate)</option>
-              <option value="b2">B2 (Upper Intermediate)</option>
-              <option value="c1">C1 (Advanced)</option>
-              <option value="c2">C2 (Expert)</option>
+              <option value="none"
+                ><!--No official certificates-->공식 자격증 없음</option
+              >
+              <option value="a1"><!--A1 (Beginner)-->A1 (입문)</option>
+              <option value="a2"><!--A2 (Elementary)-->A2 (초급)</option>
+              <option value="b1"><!--B1 (Intermediate)-->B1 (중급)</option>
+              <option value="b2"
+                ><!--B2 (Upper Intermediate)-->B2(중상급)</option
+              >
+              <option value="c1"><!--C1 (Advanced)-->C1(고급)</option>
+              <option value="c2"><!--C2 (Expert)-->C2(전문가)</option>
             </select>
           </p>
           <p>
-            Where did you learn german?
+            <!--Where did you learn german?-->
+            당신은 어느 나라에서 독일어를 어디서 배웠습니까?
             <select id="germanLearnedIn" name="germanLearnedIn">
               <option value=""></option>
               <option value="germanCountry">
-                In a german speaking country
+                <!--In a german speaking country-->
+                독일어권 국가
               </option>
               <option value="nonGermanCountry">
-                In a non-german speaking country
+                <!--In a non-german speaking country-->
+                비독일어권 국가
               </option>
             </select>
           </p>
         </fieldset>
-        <input class="top-margin submit-button" id="submitBtn" type="submit" value="Start questions" />
+        <input
+          class="top-margin submit-button"
+          id="submitBtn"
+          type="submit"
+          value="질문 시작"
+        />
       </form>
 
       <footer>
-        Contact:
+        <!--Contact:-->
+        연락처:
         <a href="mailto:victor-valerian.sebesta@stud.uni-bamberg.de"
           >victor-valerian.sebesta@stud.uni-bamberg.de</a
         >

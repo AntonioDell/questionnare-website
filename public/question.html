@@ -2,26 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Question</title>
+    <!--<title>Question</title>-->
+    <title>질문</title>
     <script type="module" src="js/question.js"></script>
     <link href="css/normalize.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
   </head>
   <body>
     <div class="content">
-      <h1 id="header">Question</h1>
+      <!--<h1 id="header">Question</h1>-->
+      <h1 id="header">질문</h1>
       <div>
         <div id="training_text" class="margin" hidden>
           <p class="border">
+            다음 예시는 실전문제 유형을 파악하기 위한 연습문제입니다. 이 결과는
+            평가되지 않을 것입니다.
+          </p>
+          <!--<p class="border">
             The following example is a training question to get used to the kind
             of questions asked. The result will not be evaluated.
-          </p>
+          </p>-->
         </div>
         <div id="changed_text" class="margin" hidden>
           <p class="border">
             다음으로, 당신은 한 단어를 듣게 될 것입니다. 이 단어는 R 또는 L 을
             포함한 것입니다. 해당되는 버튼을 누르십시오.
           </p>
+          <!--
           <p class="border">
             Hereinafter you will hear just one word. Either the version with R
             or L. Please click again on the according button.
@@ -31,18 +38,22 @@
             Version mit R oder L. Bitte drücken Sie wieder den damit
             übereinstimmenden Knopf.
           </p>
-        </div>
+        --></div>
         <div id="default_text" class="margin" hidden>
           <p class="border">
+            녹음재생을 시작하려면 재생 버튼을 클릭하십시오. 회색 버튼의 글자가
+            변경되면, 해당 버튼을 클릭하십시오.
+          </p>
+          <!--<p class="border">
             Please click on the play button to start the recording. The text on
             the gray buttons will change. Then please click on the according
             button.
-          </p>
-          <p class="border">
+          </p>-->
+          <!--<p class="border">
             Bitte drücken Sie den Play-Knopf um die Audioaufnahme zu starten.
             Der Text auf den grauen Knöpfen wird sich ändern. Bitte drücken Sie
             den entsprechenden Knopf.
-          </p>
+          </p>-->
         </div>
       </div>
 
@@ -50,15 +61,18 @@
         <audio id="audio" controls></audio>
       </div>
       <div class="margin button-holder">
+        <!--TODO: make position of answers static (L always left. f.e.)-->
         <button id="btnAnswer1" class="blue-buttons" disabled></button>
         <button id="btnAnswer2" class="blue-buttons" disabled></button>
         <button id="btnInaudible" class="blue-buttons" disabled>
-          Inaudible
+          <!--Inaudible-->
+          들리지 않음
         </button>
       </div>
 
       <footer>
-        Contact:
+        <!--Contact:-->
+        연락처:
         <a href="mailto:victor-valerian.sebesta@stud.uni-bamberg.de">
           victor-valerian.sebesta@stud.uni-bamberg.de
         </a>

@@ -18,8 +18,6 @@ function onGroupTypeChanged() {
 function onFormSubmit(e) {
   e.preventDefault();
 
-  const formData = new FormData(form);
-
   if (localStorage["test-id"]) {
     alert(
       "You already completed the survey once. If this is an error and you'd like to participate again, please contact me."
@@ -30,7 +28,7 @@ function onFormSubmit(e) {
 
   fetch("/api/uuid", {
     method: "POST",
-    body: formData,
+    body: new FormData(form),
   })
     .then((response) => {
       return response.json();
