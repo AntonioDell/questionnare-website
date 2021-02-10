@@ -15,6 +15,7 @@ function onGroupTypeChanged() {
   }
 }
 
+<<<<<<< Updated upstream
 function onFormSubmit(e) {
   e.preventDefault();
 
@@ -37,5 +38,40 @@ function onFormSubmit(e) {
       localStorage["test-id"] = respJson.testId;
       localStorage["currentQuestion"] = "0";
       window.location.href = "/question.html";
+=======
+function onSubmitClicked() {
+
+    if (localStorage['test-id']) {
+        alert('You already completed the survey once. If this is an error and you\'d like to participate again, please contact me.');
+        window.location.href = './';
+        return;
+    }
+
+    if (!groupTypeInput.value) {
+        alert('Please specify a group type!');
+        return;
+    }
+    if (groupTypeInput.value === 'test' && !germanLevelInput.value) {
+        alert('Please specify your german knowledge!');
+        return;
+    }
+
+    const testInfoData = {
+        groupType: groupTypeInput.value,
+        germanLevel: germanLevelInput.value
+    };
+
+    fetch('/questionnaire/api/uuid', {
+        method: 'POST',
+        body: JSON.stringify(testInfoData),
+        headers: {"Content-Type": "application/json"}
+    }).then(response => {
+
+        return response.json();
+    }).then(respJson => {
+        localStorage['test-id'] = respJson.testId;
+        localStorage['currentQuestion'] = '0';
+        window.location.href = './question.html';
+>>>>>>> Stashed changes
     });
 }

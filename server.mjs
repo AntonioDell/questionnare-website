@@ -37,6 +37,7 @@ function areDuplicateQuestionIdsAssigned() {
 }
 
 function setupRoutes() {
+<<<<<<< Updated upstream
   const app = express();
   const upload = multer();
 
@@ -62,9 +63,35 @@ function setupRoutes() {
         ).then((testFiles) => {
           res.status(200);
           res.json(testFiles);
+=======
+    let app = express();
+
+    app.use("/questionnaire", express.static("public"));
+    app.use(express.json());
+
+    app.listen(3000, function () {
+        //console.log("Example app listening on port 3000!");
+    });
+
+    //TODO remove debug code
+    app.get('/questionnaire/api/results', (req, res) => {
+        fs.readdir('data', (err, files) => {
+            if (err) {
+                res.status(500);
+                res.send();
+            } else {
+                let testResultFiles = files.filter(file => file.startsWith("test"));
+                Promise.all(testResultFiles.map(file => fs.readJSON('data/' + file)))
+                    .then(testFiles => {
+                        res.status(200);
+                        res.json(testFiles);
+                    });
+            }
+>>>>>>> Stashed changes
         });
       }
     });
+<<<<<<< Updated upstream
   });
 
   app.get("/api/question", (req, res) => {
@@ -109,6 +136,74 @@ function setupRoutes() {
         // User answered all questions
         res.redirect(303, "/end.html");
       }
+=======
+
+    app.get('/questionnaire/api/question', (req, res) => {
+        const testId = req.query.testId;
+
+        fs.readJSON('data/test_' + testId + '.json')
+            .then(test => {
+                const answeredQuestionIds = test.results.map(result => result.questionId);
+
+                console.log('Questions answered ', answeredQuestionIds.length);
+                let questionCountDown = answeredQuestionIds.length;
+                let selectedQuestionFile;
+                for (const questionFile of questionFiles) {
+                    questionCountDown -= questionFile.length;
+                    if (questionCountDown < 0) {
+                        selectedQuestionFile = questionFile;
+                        break;
+                    }
+                }
+
+                const missingQuestions = selectedQuestionFile ?
+                    selectedQuestionFile.filter(question => !answeredQuestionIds
+                        .some(answeredQuestionId => answeredQuestionId === question.id)) :
+                    null;
+
+                if (missingQuestions) {
+                    console.log('Json sent');
+                    // Get random question from missing questions
+                    const randomIndex = new Date().getTime() % missingQuestions.length;
+                    res.status(200);
+                    res.json(missingQuestions[randomIndex]);
+                } else {
+                    // User answered all questions
+                    res.redirect(303, '/questionnaire/end.html');
+                }
+            });
+    });
+
+
+    app.post("/questionnaire/api/uuid", (req, res) => {
+        const infos = req.body;
+        const newTest = new Test(v4(), infos.groupType, infos.germanLevel, infos.germanSinceWhen);
+        const newFile = 'data/test_' + newTest.testId + '.json';
+
+        fs.ensureFile(newFile)
+            .then(() => {
+                fs.writeJSON(newFile, newTest);
+            })
+            .then(() => {
+                res.json({testId: newTest.testId})
+            });
+    });
+
+    app.post('/questionnaire/api/result', (req, res) => {
+        let newResultData = req.body;
+        const testFile = 'data/test_' + newResultData.testId + '.json';
+        fs.readJSON(testFile)
+            .then(test => {
+                test.results.push(newResultData.data);
+                return fs.writeJSON(testFile, test)
+            })
+            .then(() => {
+                res.status(200);
+            })
+            .then(() => {
+                res.send();
+            })
+>>>>>>> Stashed changes
     });
   });
 

@@ -9,5 +9,10 @@ function startTest() {
     return;
   }
 
+<<<<<<< Updated upstream
   window.location.href = "/info.html";
 }
+=======
+    window.location.href = './info.html';
+}
+>>>>>>> Stashed changes

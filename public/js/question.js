@@ -20,6 +20,7 @@ let addtionalPlays = 0;
 audioElement.disabled = true;
 headerElement.innerText += " " + (+questionNumber + 1);
 
+<<<<<<< Updated upstream
 const url = "/api/question?testId=" + testId;
 fetch(url, {
   method: "GET",
@@ -51,6 +52,34 @@ fetch(url, {
   } else {
     window.location.href = response.url;
   }
+=======
+headerElement.innerText += ' ' + (+questionNumber + 1);
+const url = '/questionnaire/api/question?testId=' + testId;
+fetch(url, {
+    method: 'GET',
+    headers: {"Content-Type": "application/json"}
+}).then(response => {
+    if (!response.redirected && response.status === 200) {
+        response.json().then(questionData => {
+            receivedQuestionData = questionData;
+            audioElement.src = "."+questionData.audioFile;
+            audioElement.onplay = onPlay;
+
+            // TODO: Adapt to first id of rl questions
+            if (questionData.id < 33) {
+                defaultText.hidden = false;
+                changedText.hidden = true;
+            } else {
+                defaultText.hidden = true;
+                changedText.hidden = false;
+            }
+            audioElement.disabled = false;
+        });
+    } else {
+        console.log(response)
+        window.location.href = response.url;
+    }
+>>>>>>> Stashed changes
 });
 
 function onAudioEnded() {
@@ -95,6 +124,7 @@ function onWrongAnswerClicked() {
   onAnswerClicked(false);
 }
 
+<<<<<<< Updated upstream
 function onInaudibleClicked() {
   onAnswerClicked(false, true);
 }
@@ -128,4 +158,30 @@ function onAnswerClicked(correctAnswerClicked, isAnswerInaudible = false) {
       window.location.href = "/question.html";
     }
   });
+=======
+function onAnswerClicked(correctAnswerClicked) {
+    duration = new Date().getTime() - duration.getTime();
+    console.log('Measured duration: ', duration);
+    leftButton.disabled = true;
+    rightButton.disabled = true;
+
+    const resultData = {
+        testId: testId,
+        data: {
+            questionId: receivedQuestionData.id,
+            answer: correctAnswerClicked,
+            duration: duration
+        }
+    };
+    fetch('/questionnaire/api/result', {
+        method: 'POST',
+        body: JSON.stringify(resultData),
+        headers: {"Content-Type": "application/json"}
+    }).then(response => {
+        if (response.status === 200) {
+            localStorage['currentQuestion'] = +questionNumber + 1;
+            window.location.href = './question.html';
+        }
+    })
+>>>>>>> Stashed changes
 }
